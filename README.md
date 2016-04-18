@@ -40,6 +40,9 @@ Options:
   python run.py -f test_files/test_tag
   ```
   
+  
+  The result of the run will be test\_tag.pos\_tagged in the directory test_files. It is in conll-Format and an be read in by ICARUS which enables easy search (as described in paper forthcoming). You can ignore the other files or use them for debugging.
+  
 ## To retrain the system
   
   If you want to tag text that is not Middle English-Latin (by why would you want that, right?), you will have to retrain with a file that follows the formating in the test\_file folder (file: test_train). The file looks like this 
@@ -50,7 +53,9 @@ Options:
   
   The file should not contain any empty lines.
   
-  Then specify the option -r and your tagger files (and your crf directory if necessary)
+  Then specify the option -r and your tagger files (and your crf directory if necessary). The tagger files are the files you can find in the cmd-dir of the tree-tagger. This tool comes with some of the tree-tagger models (but not all of the available ones). You can easily add them by downloading them from http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/. Don't forget to adjust the tagger files according to the format of the tagger files delivered with this tool.
+  You change the tagger files with the -d and -t parameter (as shown in the example call below).
+  
   The System will produce a bunch of output files in the directory of your input file. The important files are:
   
   * pos_model+timestamp
@@ -61,3 +66,4 @@ The other files can be deleted, but can also serve as debugging files in case of
   ```bash
   python run.py -f test_files/test_train -t tree_tagger/cmd/tree-tagger-middleenglish -d tree_tagger/cmd/tree-tagger-latin -r
   ```
+You can use the newly trained model files for tagging now.
