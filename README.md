@@ -1,6 +1,7 @@
 # CodeSwitching
-This repository contains a language ID and PoS system for Latin-Middle English + Training Pipeline for other languages
 
+This repository contains a language ID and PoS system for Latin-Middle English + Training Pipeline for other languages
+It comes with trained models for Latin-Middle English but also enables you to retrain for other languages for which tree tagger models are available
 
 # System requirements
 The system requirements are:
@@ -10,9 +11,12 @@ The system requirements are:
 * perl
 
 # To run the system:
+
+
   To simply run the system you need a raw text file you want to process
   
-  code([ python run.py -h
+  ```python
+python run.py -h
 Usage: run.py [options]
 
 Options:
@@ -25,14 +29,35 @@ Options:
   -d TT_l2, --treetagger_l2=TT_l2
                         installation directory of TreeTagger call-script one
   -r, --retrain         train a new model)
+  ```
   
-  If your CRF++ is not installed in the default path, you have to specify it via the -c option
+  If your CRF++ is not installed in the default path, you have to specify it via the -c option.
+  With -t and -d you can give the tree tagger models you want to use. It needs to point to the tree-tagger files in the cmd-folder of TreeTagger. All files must follow the fomat as included in this release, which varies slightly from the original files.
   
-  with -t and -d you can give the tree tagger models you want to use. It needs to point to the tree-tagger files in the cmd-folder of TreeTagger. All files must follow the fomat as included in this release, which varies slightly from the original files.
+  Most basic run (in case you have crf installed in the default directory):
+  
+  ```bash
+  python run.py -f test_files/test_tag
+  ```
   
   # To retrain the system
   
-  If you want to tag text that is not Middle English-Latin (by why would you want that, right?), you will have to retrain with a file that follows the formating in the test_file folder (file: test_train) 
+  If you want to tag text that is not Middle English-Latin (by why would you want that, right?), you will have to retrain with a file that follows the formating in the test\_file folder (file: test_train). The file looks like this 
+  
+  > token language\_id pos_tag
+  
+  > token2 langauge\_id pos_tag
+  
+  The file should not contain any empty lines.
+  
   Then specify the option -r and your tagger files (and your crf directory if necessary)
   The System will produce a bunch of output files in the directory of your input file. The important files are:
-  * 
+  
+  * pos_model+timestamp
+  * lid_model+timestamp
+  
+The other files can be deleted, but can also serve as debugging files in case of issues.
+  
+  ```bash
+  python run.py -f test_files/test_train -t tree_tagger/cmd/tree-tagger-middleenglish -d tree_tagger/cmd/tree-tagger-latin -r
+  ```
