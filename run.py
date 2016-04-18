@@ -23,8 +23,12 @@ parser.add_option("-d", "--treetagger_l2", dest="treetagger_l2",
 parser.add_option("-r", "--retrain",
                   action="store_true", dest="training", default=False,
                   help="train a new model")
-                  
-                  
+parser.add_option("-p", "--pos_model",
+                  action="store_true", dest="model_pos", default=False,
+                  help="use a specific model for PoS tagging")
+parser.add_option("-l", "--lid_model",
+                  action="store_true", dest="model_lid", default=False,
+                  help="use a specific model for language identification")
                   
 
 (options, args) = parser.parse_args()
