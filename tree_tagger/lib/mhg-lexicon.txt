@@ -1,0 +1,43 @@
+payde	DI -
+Payde	DI -
+'	$ -
+"	$ -
+ye	AV -
+Ye	AV -
+auff	APP -	PTK -
+Auff	APP -	PTK -
+auß	APP -	PTK -
+Auß	APP -	PTK -
+pey	APP -	PTK -
+Pey	APP -	PTK -
+sein	ADJ -	VA -	PR -
+Sein	ADJ -	VA -	PR -
+sy	PR -
+Sy	PR -
+das	DD - KO -
+Das	DD - KO -
+di	DD -	PR -	DRELS -
+Di	DD -	PR -	DRELS -
+diser	PR -
+Diser	PR -
+deß	DD -	PR -	DRELS -
+Deß	DD -	PR -	DRELS -
+Der	DD - 	DRELS -
+der	DD -	DRELS -
+danck	NA -
+Danck	NA -
+er	PR -	ADJ -
+geleich ADJ -
+Geleich ADJ -
+muß	VM -
+Muß	VM -
+hör	VV -
+hören	VV -
+soll	VM -
+Soll	VM -
+payde	DI -
+Payde	DI -
+payden	DI -
+Payden	DI -
+payder	DI -
+Payder	DI -

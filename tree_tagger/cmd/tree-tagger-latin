@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# Set these paths appropriately
+
+TAGGER_DIR=$1
+BIN=${TAGGER_DIR}/bin
+CMD=${TAGGER_DIR}/cmd
+LIB=${TAGGER_DIR}/lib
+
+OPTIONS=" -prob -threshold 0.99 -sgml"
+
+
+TAGGER=${BIN}/tree-tagger
+
+PARFILE=${LIB}/latin.par
+
+
+
+$TAGGER $OPTIONS $PARFILE
+
