@@ -6,8 +6,8 @@ It comes with trained models for Latin-Middle English but also enables you to re
 # System requirements
 The system requirements are:
 * python 2.7
-* nltk.tokenize
-* CRF++ (tested with version 0.58, but I am not aware of any changes that would not allow for a lower version) 
+* nltk.tokenize (by doing nltk.download() in any python interpreter and choosing models/punkt for download)
+* CRF++ (tested with version 0.58, but I am not aware of any changes that would not allow for a lower version: https://taku910.github.io/crfpp/) 
 * perl
 
 ## To run the system:
