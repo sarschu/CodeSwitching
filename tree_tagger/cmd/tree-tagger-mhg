@@ -2,22 +2,18 @@
 
 # Set these paths appropriately
 
-BIN=/mount/arbeitsdaten13/users/schulzsh/tools/tree_tagger/bin
-CMD=/mount/arbeitsdaten13/users/schulzsh/tools/tree_tagger/cmd
-LIB=/mount/arbeitsdaten13/users/schulzsh/tools/tree_tagger/lib
+TAGGER_DIR=$1
+BIN=${TAGGER_DIR}/bin
+CMD=${TAGGER_DIR}/cmd
+LIB=${TAGGER_DIR}/lib
 
-OPTIONS="-token -lemma -sgml -pt-with-lemma"
+OPTIONS=" -sgml -prob -threshold 0.99"
 
-TOKENIZER=${CMD}/utf8-tokenize.perl
+
 TAGGER=${BIN}/tree-tagger
-ABBR_LIST=${LIB}/german-abbreviations-utf8
 PARFILE=${LIB}/middlehighgerman.par
-FILTER=${CMD}/filter-german-tags
 
-#$TOKENIZER -a $ABBR_LIST $* |
-# external lexicon lookup
-#perl $CMD/lookup.perl $LEXFILE |
+
 # tagging
 $TAGGER $OPTIONS $PARFILE $* | 
-# error correction
-$FILTER
+ER

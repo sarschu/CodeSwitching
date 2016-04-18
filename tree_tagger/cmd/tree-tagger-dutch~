@@ -7,14 +7,15 @@ BIN=${TAGGER_DIR}/bin
 CMD=${TAGGER_DIR}/cmd
 LIB=${TAGGER_DIR}/lib
 
-OPTIONS=" -prob -threshold 0.99 -sgml"
+OPTIONS=" -sgml -prob -threshold 0.99"
 
 
 TAGGER=${BIN}/tree-tagger
 
-PARFILE=${LIB}/latin.par
 
+TAGGER=${BIN}/tree-tagger
+
+PARFILE=${LIB}/dutch-utf8.par
 
 
 $TAGGER $OPTIONS $PARFILE
-

@@ -2,21 +2,16 @@
 
 # Set these paths appropriately
 
-BIN=/home/sarah/tools/tree_tagger/bin
-CMD=/home/sarah/tools/tree_tagger/cmd
-LIB=/home/sarah/tools/tree_tagger/lib
+TAGGER_DIR=$1
+BIN=${TAGGER_DIR}/bin
+CMD=${TAGGER_DIR}/cmd
+LIB=${TAGGER_DIR}/lib
 
-OPTIONS="-token -lemma -sgml"
+OPTIONS=" -sgml -prob -threshold 0.99"
 
-TOKENIZER=${CMD}/utf8-tokenize.perl
-MWL=${CMD}/mwl-lookup.perl
+
 TAGGER=${BIN}/tree-tagger
-ABBR_LIST=${LIB}/bulgarian-abbreviations
 PARFILE=${LIB}/bulgarian-utf8.par
-MWLFILE=${LIB}/bulgarian-mwls
 
-$TOKENIZER -a $ABBR_LIST $* |
-# recognition of MWLs
-$MWL -f $MWLFILE |
 # tagging
 $TAGGER $OPTIONS $PARFILE

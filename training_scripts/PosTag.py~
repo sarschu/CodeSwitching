@@ -16,7 +16,7 @@ import codecs
 
 class Tagger:
 
-    def __init__(self,filename=None,training=False,model_lid='models/crf_model_language_detection',model_pos='models/crf_model_pos',template_lid='models/template_lid',template_pos='models/template_pos',crf='/usr/local/bin',treetagger_l1='tree_tagger/cmd/tree-tagger-middleenglish',treetagger_l2='tree_tagger/cmd/tree-tagger-latin'):
+    def __init__(self,filename=None,training=False,model_lid='models/crf_model_language_detection',model_pos='models/crf_model_pos',template_lid='models/template_lid',template_pos='models/template_75',crf='/usr/local/bin',treetagger_l1='tree_tagger/cmd/tree-tagger-middleenglish',treetagger_l2='tree_tagger/cmd/tree-tagger-latin'):
         infile = os.path.abspath(filename)
         self.infile=infile
         self.crf= crf

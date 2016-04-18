@@ -2,16 +2,16 @@
 
 # Set these paths appropriately
 
-BIN=/home/sarah/tools/tree_tagger/bin
-CMD=/home/sarah/tools/tree_tagger/cmd
-LIB=/home/sarah/tools/tree_tagger/lib
+TAGGER_DIR=$1
+BIN=${TAGGER_DIR}/bin
+CMD=${TAGGER_DIR}/cmd
+LIB=${TAGGER_DIR}/lib
 
-OPTIONS="-token -lemma -sgml"
+OPTIONS=" -sgml -prob -threshold 0.99"
+
 
 TAGGER=${BIN}/tree-tagger
-TOKENIZER=${CMD}/utf8-tokenize.perl
-ABBR_LIST=${LIB}/dutch-abbreviations
 PARFILE=${LIB}/dutch-utf8.par
 
-$TOKENIZER -a $ABBR_LIST $* |
+
 $TAGGER $OPTIONS $PARFILE
