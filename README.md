@@ -31,7 +31,7 @@ Options:
   -r, --retrain         train a new model)
   ```
   
-  If your CRF++ is not installed in the default path, you have to specify it via the -c option.
+  If your CRF++ is not installed in the default path of CRF++ (which is /usr/local/bin), you have to specify it via the -c option.
   With -t and -d you can give the tree tagger models you want to use. It needs to point to the tree-tagger files in the cmd-folder of TreeTagger. All files must follow the fomat as included in this release, which varies slightly from the original files.
   
   Most basic run (in case you have crf installed in the default directory):
