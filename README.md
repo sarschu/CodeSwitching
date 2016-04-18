@@ -28,7 +28,10 @@ Options:
                         installation directory of TreeTagger call-script one
   -d TT_l2, --treetagger_l2=TT_l2
                         installation directory of TreeTagger call-script one
-  -r, --retrain         train a new model)
+  -r, --retrain         train a new model
+  -p, --pos_model       use a specific model for PoS tagging
+  -l, --lid_model       use a specific model for language identification
+
   ```
   
   If your CRF++ is not installed in the default path of CRF++ (which is /usr/local/bin), you have to specify it via the -c option.
@@ -49,7 +52,7 @@ Options:
   
   > token language\_id pos_tag
   
-  > token2 langauge\_id pos_tag
+  > token2 language\_id pos_tag
   
   The file should not contain any empty lines.
   
@@ -66,4 +69,4 @@ The other files can be deleted, but can also serve as debugging files in case of
   ```bash
   python run.py -f test_files/test_train -t tree_tagger/cmd/tree-tagger-middleenglish -d tree_tagger/cmd/tree-tagger-latin -r
   ```
-You can use the newly trained model files for tagging now.
+You can use the newly trained model files for tagging now by including them in the tagging process with the parameters -l (language model) and -p (PoS model).
