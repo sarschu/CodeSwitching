@@ -10,7 +10,7 @@ The system requirements are:
 * CRF++ (tested with version 0.58, but I am not aware of any changes that would not allow for a lower version) 
 * perl
 
-# To run the system:
+## To run the system:
 
 
   To simply run the system you need a raw text file you want to process
@@ -40,7 +40,7 @@ Options:
   python run.py -f test_files/test_tag
   ```
   
-  # To retrain the system
+## To retrain the system
   
   If you want to tag text that is not Middle English-Latin (by why would you want that, right?), you will have to retrain with a file that follows the formating in the test\_file folder (file: test_train). The file looks like this 
   
