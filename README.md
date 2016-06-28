@@ -15,7 +15,7 @@ The system requirements are:
 
   To simply run the system you need a raw text file you want to process
   
-  ```python
+  ```
 python run.py -h
 Usage: run.py [options]
 
@@ -29,8 +29,11 @@ Options:
   -d TT_l2, --treetagger_l2=TT_l2
                         installation directory of TreeTagger call-script one
   -r, --retrain         train a new model
-  -p, --pos_model       use a specific model for PoS tagging
-  -l, --lid_model       use a specific model for language identification
+  -l lid, --model_lid=lid
+                        model file for lid
+  -p MODEL_POS, --model_pos=MODEL_POS
+                        model file for pos
+
 
   ```
   
@@ -58,11 +61,12 @@ Options:
   
   Then specify the option -r and your tagger files (and your crf directory if necessary). The tagger files are the files you can find in the cmd-dir of the tree-tagger. This tool comes with some of the tree-tagger models (but not all of the available ones). You can easily add them by downloading them from http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/. Don't forget to adjust the tagger files according to the format of the tagger files delivered with this tool.
   You change the tagger files with the -d and -t parameter (as shown in the example call below).
+  You should also give names and directories for the result models by specifying -l and -p. If you don't specify those parameters, the system will write the models to the directory you are in.
   
   The System will produce a bunch of output files in the directory of your input file. The important files are:
   
-  * pos_model+timestamp
-  * lid_model+timestamp
+  * pos_model
+  * lid_model
   
 The other files can be deleted, but can also serve as debugging files in case of issues.
   
