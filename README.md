@@ -64,8 +64,9 @@ Options:
   
   Then specify the option -r and your tagger files (and your crf directory if necessary). The tagger files are the files you can find in the cmd-dir of the tree-tagger. This tool comes with some of the tree-tagger models (but not all of the available ones). You can easily add them by downloading them from http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/. Don't forget to adjust the tagger files according to the format of the tagger files delivered with this tool.
   You change the tagger files with the -d and -t parameter (as shown in the example call below).
+
   You should also give names and directories for the result models by specifying -l and -p. If you don't specify those parameters, the system will write the models to the models directory and add a time stamp.
-  
+
   The System will produce a bunch of output files in the directory of your input file. The important files are:
   
   * pos_model+timestamp
