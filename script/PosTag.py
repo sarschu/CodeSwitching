@@ -18,7 +18,7 @@ ts = time.time()
 st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
 class Tagger:
 
-    def __init__(self,filename=None,training=False,model_lid='../models/language_detection_model'+st,model_pos='../models/pos_model'+st,template_lid='../models/template_lid',template_pos='../models/template_pos',crf='/usr/local/bin',treetagger_l1='../tree_tagger/cmd/tree-tagger-middleenglish',treetagger_l2='../tree_tagger/cmd/tree-tagger-latin',wordlist1="../wordlists/wordlists_lat.txt",wordlist2="../wordlists/wordlists.txt"):
+    def __init__(self,filename=None,testing=False,training=False,model_lid='../models/language_detection_model'+st,model_pos='../models/pos_model'+st,template_lid='../models/template_lid',template_pos='../models/template_pos',crf='/usr/local/bin',treetagger_l1='../tree_tagger/cmd/tree-tagger-middleenglish',treetagger_l2='../tree_tagger/cmd/tree-tagger-latin',wordlist1="../wordlists/wordlists_lat.txt",wordlist2="../wordlists/wordlists.txt"):
         infile = os.path.abspath(filename)
         self.infile=infile
         self.crf= crf
@@ -26,11 +26,12 @@ class Tagger:
         self.wordlist2 = wordlist2
 
         self.train=training
+        self.testing=testing
         self.inf = infile+'.tok'
         self.treetagger_l1 = treetagger_l1
         print self.treetagger_l1
         self.treetagger_l2 = treetagger_l2
-        if self.train:
+        if self.train or self.testing:
             os.system("cut -f1 -d'\t' "+self.infile+" > "+self.inf)
         else:
             self.inf_text=filename
