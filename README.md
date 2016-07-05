@@ -25,6 +25,7 @@ $ sudo find ./ | grep libcrfpp.so.0
 ./local/lib/libcrfpp.so.0.0.0
 ./local/lib/libcrfpp.so.0
 $ sudo cp local/lib/libcrfpp.so.0 /usr/lib
+``` 
 
 Now, your crf_learn should return the help menu.
 
