@@ -5,7 +5,7 @@ import json
 from math import ceil
 import os
 
-# usage: python make_sets.py feature_file
+# usage: python make_sets.py trainingfile
 
 all_toks=codecs.open(sys.argv[1],'r','utf8').readlines()
 

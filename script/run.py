@@ -10,6 +10,8 @@ import os
 import subprocess
 from PosTag import Tagger
 
+#make files executable
+os.system('chmod  -R +x ../')
 parser = OptionParser()
 
 parser.add_option("-f", "--file", dest="filename",
@@ -23,13 +25,18 @@ parser.add_option("-d", "--treetagger_l2", dest="treetagger_l2",
 parser.add_option("-r", "--retrain",
                   action="store_true", dest="training", default=False,
                   help="train a new model")
+parser.add_option("-z", "--testing",
+                  action="store_true", dest="testing", default=False,
+                  help="test with gold standard data")                 
 parser.add_option("-l", "--model_lid", dest="model_lid",
                   help="model file for lid", metavar="lid") 
 parser.add_option("-p", "--model_pos", dest="model_pos", help="word list with POS for language 1")
 parser.add_option("-w", "--wordlist1", dest="wordlist1",
                   help="model file for lid", metavar="lid") 
 parser.add_option("-v", "--wordlist2", dest="wordlist2", help="word list with POS for language 2")
-                  
+parser.add_option("-k", "--no_tokenize",
+                  action="store_false", dest="tokenize", default=True,
+                  help="use pretokenized text, one tok per line")
                   
 
 (options, args) = parser.parse_args()

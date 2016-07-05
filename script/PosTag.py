@@ -15,23 +15,25 @@ import time
 import codecs
 
 ts = time.time()
+scriptspath=os.path.abspath(__file__)
 st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
 class Tagger:
 
-    def __init__(self,filename=None,testing=False,training=False,model_lid='../models/language_detection_model'+st,model_pos='../models/pos_model'+st,template_lid='../models/template_lid',template_pos='../models/template_pos',crf='/usr/local/bin',treetagger_l1='../tree_tagger/cmd/tree-tagger-middleenglish',treetagger_l2='../tree_tagger/cmd/tree-tagger-latin',wordlist1="../wordlists/wordlists_lat.txt",wordlist2="../wordlists/wordlists.txt"):
+    def __init__(self,filename=None,testing=False,training=False,model_lid=scriptspath[:-9]+'../models/language_detection_model',model_pos=scriptspath[:-9]+'../models/pos_model',template_lid=scriptspath[:-9]+'../models/template_lid',template_pos=scriptspath[:-9]+'../models/template_pos',crf='/usr/local/bin',treetagger_l1=scriptspath[:-9]+'/../tree_tagger/cmd/tree-tagger-middleenglish',treetagger_l2=scriptspath[:-9]+'/../tree_tagger/cmd/tree-tagger-latin',wordlist1=scriptspath[:-9]+'../wordlists/wordlists_lat.txt',wordlist2=scriptspath[:-9]+'../wordlists/wordlists.txt',tokenize=True):
+        SCDIR=scriptspath[:-9]
         infile = os.path.abspath(filename)
-        self.infile=infile
-        self.crf= crf
-        self.wordlist= wordlist1
-        self.wordlist2 = wordlist2
-
+        self.infile=os.path.abspath(infile)
+        self.crf= os.path.abspath(crf)
+        self.wordlist= os.path.abspath(wordlist1)
+        self.wordlist2 = os.path.abspath(wordlist2)
+        self.tokenize=tokenize
         self.train=training
         self.testing=testing
         self.inf = infile+'.tok'
-        self.treetagger_l1 = treetagger_l1
-        print self.treetagger_l1
-        self.treetagger_l2 = treetagger_l2
-        if self.train or self.testing:
+
+        self.treetagger_l1 = os.path.abspath(treetagger_l1)
+        self.treetagger_l2 = os.path.abspath(treetagger_l2)
+        if self.train or self.testing or self.tokenize==False:
             os.system("cut -f1 -d'\t' "+self.infile+" > "+self.inf)
         else:
             self.inf_text=filename
@@ -46,9 +48,13 @@ class Tagger:
             self.template_lid=os.path.abspath(template_lid)
             self.template_pos=os.path.abspath(template_pos)
 
-
-        self.model_l= os.path.abspath(model_lid)
-        self.model_pos= os.path.abspath(model_pos)
+        if training:
+           self.model_pos= os.path.abspath(model_pos+'_'+st)
+           self.model_l= os.path.abspath(model_lid+'_'+st)
+        else:
+           self.model_pos= os.path.abspath(model_pos)
+           self.model_l= os.path.abspath(model_lid)
+        
 
     def run(self):
         prepro= Preprocess(self.inf,self.treetagger_l1,self.treetagger_l2)
@@ -104,7 +110,7 @@ class Tagger:
             for line in withfeat:
                 if line.strip() != '':
                     out_final.write(str(idn)+'\t'+line.split()[0]+'\t'+line.split()[-2]+'\t_\t'+line.split()[-1].strip()+'\t_\t_\t_\t_\t_\t_\t_\t_\t_\t_\n')
-                    #idn+=1
+                    idn+=1
                     #out_final.write(line.split()[0]+'\t'+line.split()[-2]+'\t'+line.split()[-1].strip()+'\n')
                 else:
                     out_final.write('\n')
