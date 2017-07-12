@@ -15,13 +15,15 @@ import time
 import codecs
 
 ts = time.time()
-scriptspath=os.path.abspath(__file__)
+scriptspath=os.path.abspath(".")
+
 st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
 class Tagger:
 
-    def __init__(self,filename=None,testing=False,training=False,model_lid=scriptspath[:-9]+'../models/language_detection_model',model_pos=scriptspath[:-9]+'../models/pos_model',template_lid=scriptspath[:-9]+'../models/template_lid',template_pos=scriptspath[:-9]+'../models/template_pos',crf='/usr/local/bin',treetagger_l1=scriptspath[:-9]+'/../tree_tagger/cmd/tree-tagger-middleenglish',treetagger_l2=scriptspath[:-9]+'/../tree_tagger/cmd/tree-tagger-latin',wordlist1=scriptspath[:-9]+'../wordlists/wordlists_lat.txt',wordlist2=scriptspath[:-9]+'../wordlists/wordlists.txt',tokenize=True):
-        SCDIR=scriptspath[:-9]
+    def __init__(self,filename=None,testing=False,training=False,model_lid=scriptspath+'/../models/language_detection_model',model_pos=scriptspath+'/../models/pos_model',template_lid=scriptspath+'/../models/template_lid',template_pos=scriptspath+'/../models/template_pos',crf='/usr/local/bin',treetagger_l1=scriptspath+'/../tree_tagger/cmd/tree-tagger-middleenglish',treetagger_l2=scriptspath+'/../tree_tagger/cmd/tree-tagger-latin',wordlist1=scriptspath+'/../wordlists/wordlists_lat.txt',wordlist2=scriptspath+'/../wordlists/wordlists.txt',tokenize=True):
+        SCDIR=scriptspath
         infile = os.path.abspath(filename)
+        print "input file located at "+infile
         self.infile=os.path.abspath(infile)
         self.crf= os.path.abspath(crf)
         self.wordlist= os.path.abspath(wordlist1)
